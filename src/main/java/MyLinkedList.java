@@ -24,6 +24,17 @@ public class MyLinkedList {
         return lastNode;
     }
 
+    public Node removeAt(int index) {
+        Node node = getNodeAt(index);
+        if (node.getPrevNode() != null) {
+            node.getPrevNode().setNextNode(node.getNextNode());
+        } else  {
+            this.node = node.getNextNode().removePrevNode();
+        }
+        this.node.setCount(this.node.getCount() - 1);
+        return node;
+    }
+
     public boolean isEmpty() {
         if (this.node.isEmpty()) {
             return true;

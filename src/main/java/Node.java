@@ -36,6 +36,18 @@ public class Node {
         this.value = value;
     }
 
+    public Node removePrevNode() {
+        Node node = this.prevNode;
+        this.prevNode = null;
+        return node;
+    }
+
+    public Node removeNextNode() {
+        Node node = this.nextNode;
+        this.nextNode = null;
+        return node;
+    }
+
     public boolean isEmpty() {
         if (getValue() == null &&
                 getPrevNode() == null &&

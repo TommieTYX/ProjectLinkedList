@@ -16,5 +16,8 @@ public class Main {
 
         System.out.println("Get index at 1-----------");
         System.out.println(myLinkedList.getNodeAt(1).getValue());
+
+        System.out.println("Remove index at 1----------- " + myLinkedList.removeAt(1).getValue());
+        myLinkedList.print();
     }
 }
