@@ -6,6 +6,12 @@ public class Main {
         myLinkedList.add("3");
         myLinkedList.add("20");
         myLinkedList.add("14");
+
+        myLinkedList.print();
+
+        System.out.println("-----------");
+
+        myLinkedList.remove();
         myLinkedList.print();
     }
 }

@@ -12,8 +12,15 @@ public class MyLinkedList {
 
             int index = this.node.getIndex();
             Node lastNode = getLastNode(this.node);
-            lastNode.setNextNode(new Node(++index, this.node, value));
+            lastNode.setNextNode(new Node(++index, lastNode, value));
         }
+    }
+
+    public Node remove() {
+        Node lastNode = getLastNode(this.node);
+        Node newLastNode = lastNode.getPrevNode();
+        newLastNode.setNextNode(null);
+        return lastNode;
     }
 
     public boolean isEmpty() {
@@ -23,12 +30,16 @@ public class MyLinkedList {
         return false;
     }
 
-    public Node getLastNode(Node n) {
+    private Node getLastNode(Node n) {
         Node nextNode = n.getNextNode();
         if (nextNode == null) {
             return n;
         }
         return getLastNode(nextNode);
+    }
+
+    public Node getLastNode() {
+        return getLastNode(this.node);
     }
 
     public void print(Node n) {
