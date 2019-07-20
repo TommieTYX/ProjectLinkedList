@@ -20,6 +20,7 @@ public class MyLinkedList {
         Node lastNode = getLastNode(this.node);
         Node newLastNode = lastNode.getPrevNode();
         newLastNode.setNextNode(null);
+        this.node.setCount(this.node.getCount() - 1);
         return lastNode;
     }
 
@@ -30,19 +31,30 @@ public class MyLinkedList {
         return false;
     }
 
-    private Node getLastNode(Node n) {
-        Node nextNode = n.getNextNode();
-        if (nextNode == null) {
-            return n;
-        }
-        return getLastNode(nextNode);
+    public Node getNodeAt(int index) {
+        return getNodeAt(index, this.node);
     }
 
     public Node getLastNode() {
         return getLastNode(this.node);
     }
 
-    public void print(Node n) {
+    public void print() {
+        print(this.node);
+    }
+
+
+
+
+
+    private Node getNodeAt(int index, Node node) {
+        if (node.getIndex() == index) {
+            return node;
+        }
+        return getNodeAt(index, node.getNextNode());
+    }
+
+    private void print(Node n) {
         if (n != null || !n.isEmpty()) {
             System.out.println(n.getValue());
             Node nextNode = n.getNextNode();
@@ -52,7 +64,11 @@ public class MyLinkedList {
         }
     }
 
-    public void print() {
-        print(this.node);
+    private Node getLastNode(Node n) {
+        Node nextNode = n.getNextNode();
+        if (nextNode == null) {
+            return n;
+        }
+        return getLastNode(nextNode);
     }
 }
